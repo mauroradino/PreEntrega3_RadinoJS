@@ -1,8 +1,6 @@
 let listaPresentes = [];
       let listaAusentes = [];
       let alumnos = [];
-      let presentes = 0;
-      let ausentes = 0;
       let totales;
       let nombre = document.getElementById("nombre");
       let apellido = document.getElementById("apellido");
@@ -13,7 +11,7 @@ let listaPresentes = [];
       let liAusentes = document.getElementById("listaAusentes");
       let liPresentes = document.getElementById("listaPresentes");
       let liTotal = document.getElementById("listaTotal");
-
+      let porcentaje = document.getElementById("porcentaje")
       ausente.addEventListener("change", () => {
         if (ausente.checked) {
           presente.checked = false;
@@ -38,7 +36,6 @@ let listaPresentes = [];
 
         if (presente.checked) {
           alumno.presentismo = "presente";
-          presentes++;
           listaPresentes.push(alumno);
 
           let nuevoElemento = document.createElement("li");
@@ -47,7 +44,6 @@ let listaPresentes = [];
 
         } else if (ausente.checked) {
           alumno.presentismo = "ausente";
-          ausentes++;
           listaAusentes.push(alumno);
           
 
@@ -62,15 +58,12 @@ let listaPresentes = [];
         alumnos.push(alumno);
         nombre.value = "";
         apellido.value = "";
-        totales = totalAlumnos.value;
         localStorage.setItem("alumno", JSON.stringify(alumnos));
 
         let nuevoElemento = document.createElement("li");
         nuevoElemento.textContent = alumno.nombre + " " + alumno.apellido;
         liTotal.appendChild(nuevoElemento);
       });
-
-
 
 limpiar.addEventListener("click", () => {
   localStorage.clear();
@@ -80,9 +73,4 @@ limpiar.addEventListener("click", () => {
   liTotal.remove()
 });
 
-let porcentajePresentes = (presentes * 100) / totalAlumnos;
-console.log(`hay ${presentes} alumnos presentes`);
-console.log(`hay ${ausentes} alumnos ausentes`);
-console.log(`hay ${porcentajePresentes}% de presentismo`);
-console.log(listaAusentes);
-console.log(listaPresentes);
+
