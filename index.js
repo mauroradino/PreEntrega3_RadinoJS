@@ -71,6 +71,8 @@ limpiar.addEventListener("click", () => {
   presente.checked = false;
   ausente.checked = false;
   liTotal.remove()
+  liAusentes.remove()
+  liPresentes.remove()    
 });
 
 
